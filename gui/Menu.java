@@ -11,8 +11,8 @@ public class Menu {
 
     ArrayList <Funcionario> funcionario = new ArrayList<>();
     ArrayList <Gerente> gerente = new ArrayList<>();
-    //ArrayList <Cliente> cliente = new ArrayList<>();
-    //ainda não implementei
+    ArrayList <Pessoa> cliente = new ArrayList<>();
+    
     Menu(){
         
     int resposta = 0;
