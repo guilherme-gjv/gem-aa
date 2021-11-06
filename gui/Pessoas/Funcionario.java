@@ -1,15 +1,16 @@
-package gui;
+package gui.Pessoas;
 
 import java.util.*;
 
 public class Funcionario extends Pessoa{
     private float salario;
     private String setor;
+    int numeroDeVendas = 0;
 
     private Scanner strLeitor = new Scanner(System.in);
     private Scanner numLeitor = new Scanner(System.in);
     
-    Funcionario(){
+    public Funcionario(){
         super();
         setFuncionario();
     }
@@ -19,7 +20,7 @@ public class Funcionario extends Pessoa{
         System.out.println("Setor: ");
         setor = strLeitor.nextLine();
     }
-    void exibirFuncionario(){
+    public void exibirFuncionario(){
         exibir();
         System.out.println("Salário: "+salario);
         System.out.println("Setor: "+ setor);
@@ -27,6 +28,12 @@ public class Funcionario extends Pessoa{
     public void updateFuncionario(){
         updatePessoa();
         setFuncionario();
+    }
+    public void novaVenda(){
+        numeroDeVendas++;
+    }
+    public int getNumeroDeVendas(){
+        return numeroDeVendas;
     }
     public float getSalario(){
         return salario;

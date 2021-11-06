@@ -1,4 +1,4 @@
-package gui;
+package gui.Pessoas;
 
 import java.util.Scanner;
 

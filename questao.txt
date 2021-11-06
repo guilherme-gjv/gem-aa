@@ -17,8 +17,11 @@ funcionários possui o valor de vendas do mês. Para cada cliente são registrad
     ◦ Cadastro de funcionários;
     ◦ Cadastro e consulta de clientes;
     ◦ Exibir todos os gerentes da empresa e o valor total que a empresa paga;
+
     ◦ Atualizar o endereço e telefone de um determinado funcionário (solicitar o nome);
+
     ◦ Atualizar o valor de vendas de um determinado vendedor (solicitar o nome).
+    
 • Observações:
     o Trabalhos iguais ou muito simulares receberão nota zero;
     o A solução poderá ser apresentada na turma;
