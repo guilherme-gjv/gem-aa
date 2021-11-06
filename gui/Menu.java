@@ -9,18 +9,46 @@ public class Menu {
     Scanner strLeitor = new Scanner(System.in);
     Scanner numLeitor = new Scanner(System.in);
 
-    ArrayList <Funcionario> funcionario = new ArrayList<>();
-    ArrayList <Gerente> gerente = new ArrayList<>();
-    ArrayList <Pessoa> cliente = new ArrayList<>();
-    
-    Menu(){
-        
-    int resposta = 0;
-        do{
+    ArrayList<Funcionario> funcionario = new ArrayList<>();
+    ArrayList<Gerente> gerente = new ArrayList<>();
+    ArrayList<Pessoa> cliente = new ArrayList<>();
+
+    Menu() {
+
+        int resposta = 0;
+        do {
             exibirMenu();
             resposta = numLeitor.nextInt();
-        }while(resposta!=9);
-        
+            switch (resposta) {
+            case 1:
+                cadastroFuncionario();
+                break;
+            case 2:
+                venda();
+                break;
+            case 3:
+                cadastroCliente();
+                break;
+            case 4:
+                consultaCliente();
+                break;
+            case 5:
+                exibirGerentes();
+                break;
+            case 6:
+                updateFuncionario();
+                break;
+            case 7:
+                updateVendedor();
+                break;
+            case 8:
+                updateGerente();
+                break;
+            case 9:
+                System.out.println("Saindo...");
+                break;
+            }
+        } while (resposta != 9);
 
     }
 
@@ -34,10 +62,11 @@ public class Menu {
         System.out.println("6 - Atualizar dados de um Funcionário"); // perguntar o nome
         System.out.println("7 - Atualizar dados de um Vendedor"); // perguntar o nome
         System.out.println("8 - Atualizar dados de um Gerente");// perguntar o nome
+        System.out.println("9 - Sair");
         System.out.println("Digite... ");
     }
 
-    void cadastrarFuncionario() {
+    void cadastroFuncionario() {
 
     }
 
