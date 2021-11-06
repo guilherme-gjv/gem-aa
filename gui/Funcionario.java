@@ -26,7 +26,7 @@ public class Funcionario extends Pessoa{
     }
     public void updateFuncionario(){
         updatePessoa();
-
+        setFuncionario();
     }
     public float getSalario(){
         return salario;
