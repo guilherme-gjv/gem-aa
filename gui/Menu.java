@@ -10,7 +10,6 @@ public class Menu {
     Scanner numLeitor = new Scanner(System.in);
 
     ArrayList<Vendedor> vendedor = new ArrayList<>();
-    ArrayList<Funcionario> funcionario = new ArrayList<>();
     ArrayList<Gerente> gerente = new ArrayList<>();
     ArrayList<Pessoa> cliente = new ArrayList<>();
 
@@ -37,22 +36,19 @@ public class Menu {
                 exibirGerentes();
                 break;
             case 6:
-                updateFuncionario();
-                break;
-            case 7:
                 updateVendedor();
                 break;
-            case 8:
+            case 7:
                 updateGerente();
                 break;
-            case 9:
+            case 8:
                 updateCliente();
                 break;
-            case 10:
+            case 9:
                 System.out.println("Saindo...");
                 break;
             }
-        } while (resposta != 10);
+        } while (resposta != 9);
 
     }
 
@@ -61,26 +57,39 @@ public class Menu {
         System.out.println("2 - Cadastrar funcionário");
         System.out.println("3 - Cadastro de Cliente");
         System.out.println("4 - Consulta de Cliente");
-        System.out.println("5 - Exibir gerentes da empresa"); // todos os gerente e o total de quanto a empresa paga
+        System.out.println("5 - Exibir gerentes da empresa"); // todos os gerentes e o total de quanto a empresa paga
                                                               // para eles
-        System.out.println("6 - Atualizar dados de um Funcionário"); // perguntar o nome
-        System.out.println("7 - Atualizar dados de um Vendedor"); // perguntar o nome
-        System.out.println("8 - Atualizar dados de um Gerente");// perguntar o nome
+        System.out.println("6 - Atualizar dados de um Vendedor"); // perguntar o nome
+        System.out.println("7 - Atualizar dados de um Gerente");// perguntar o nome
+        System.out.println("8 - Atualizar dados de um Cliente");
         System.out.println("9 - Sair");
         System.out.println("Digite... ");
     }
 
     void venda() {
-        
+
         System.out.println("Funcionário da venda: ");
-         // recebe scanner e tal
+        // recebe scanner e tal
     }
 
     void cadastroFuncionario() {
         int tipo;
-        System.out.println("Digite o tipo: \n1 - Funcionário;\b2 - Vendedor;\b3 - Gerente;\b4 - Cliente; ");
+        System.out.println("Digite o tipo: \n1 - Vendedor;\b2 - Gerente;\b3 - Cliente; ");
         tipo = numLeitor.nextInt();
-
+        switch (tipo) {
+        case 1:
+            Vendedor v = new Vendedor();
+            vendedor.add(v);
+            break;
+        case 2:
+            Gerente g = new Gerente();
+            gerente.add(g);
+            break;
+        case 3:
+            Pessoa c = new Pessoa();
+            cliente.add(c);
+            break;
+        }
     }
 
     void cadastroCliente() {
@@ -90,34 +99,54 @@ public class Menu {
 
     void consultaCliente() {
         System.out.println("Pesquisar Cliente");
-        cliente.get(pesquisa(4)).exibir();
+        int i = pesquisa(3);
+        if (i == -1) {
+            System.out.println("Não encontrado! ");
+        } else {
+            cliente.get(i).exibir();
+        }
+
     }
 
     void exibirGerentes() {
-    }
-
-    void updateFuncionario() {
-        System.out.println("Atualizar Funcionário");
-        int i = pesquisa(1);
-        funcionario.get(i).updateFuncionario();
+        float somaSalarios = 0;
+        for (int i = 0; i < gerente.size(); i++) {
+            somaSalarios = gerente.get(i).exibirGerente() + somaSalarios;
+        }
+        System.out.println("A empresa paga " + somaSalarios + " para todos os Gerentes");
     }
 
     void updateVendedor() {
         System.out.println("Atualizar Vendedor ");
-        int i = pesquisa(2);
-        vendedor.get(i).updateFuncionario();
+        int i = pesquisa(1);
+        if (i == -1) {
+            System.out.println("Não encontrado! ");
+        } else {
+            vendedor.get(i).updateFuncionario();
+        }
+
     }
 
     void updateGerente() {
         System.out.println("Atualizar Gerente ");
-        int i = pesquisa(3);
-        gerente.get(i).updateGerente();
+        int i = pesquisa(2);
+        if (i == -1) {
+            System.out.println("Não encontrado! ");
+        } else {
+            gerente.get(i).updateGerente();
+        }
+
     }
 
     void updateCliente() {
         System.out.println("Atualizar Cliente ");
-        int i = pesquisa(4);
-        cliente.get(i).updatePessoa();
+        int i = pesquisa(3);
+        if (i == -1) {
+            System.out.println("Não encontrado! ");
+        } else {
+            cliente.get(i).updatePessoa();
+        }
+
     }
 
     public int pesquisa(int tipoDePessoa) {
@@ -131,27 +160,20 @@ public class Menu {
         nomePesquisa = strLeitor.nextLine();
         switch (tipoDePessoa) {
         case 1:
-            for (int i = 0; i < funcionario.size(); i++) {
-                if (funcionario.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
-                    return i;
-                }
-            }
-            break;
-        case 2:
             for (int i = 0; i < vendedor.size(); i++) {
                 if (vendedor.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
                     return i;
                 }
             }
             break;
-        case 3:
+        case 2:
             for (int i = 0; i < gerente.size(); i++) {
                 if (gerente.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
                     return i;
                 }
             }
             break;
-        case 4:
+        case 3:
             for (int i = 0; i < cliente.size(); i++) {
                 if (cliente.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
                     return i;
