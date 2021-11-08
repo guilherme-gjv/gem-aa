@@ -22,10 +22,10 @@ public class Menu {
             resposta = numLeitor.nextInt();
             switch (resposta) {
             case 1:
-                cadastroFuncionario();
+                venda();
                 break;
             case 2:
-                venda();
+                cadastroFuncionario();
                 break;
             case 3:
                 cadastroCliente();
@@ -46,16 +46,19 @@ public class Menu {
                 updateGerente();
                 break;
             case 9:
+                updateCliente();
+                break;
+            case 10:
                 System.out.println("Saindo...");
                 break;
             }
-        } while (resposta != 9);
+        } while (resposta != 10);
 
     }
 
     void exibirMenu() {
-        System.out.println("1 - Cadastrar funcionário");
-        System.out.println("2 - Nova Venda");
+        System.out.println("1 - Nova Venda");
+        System.out.println("2 - Cadastrar funcionário");
         System.out.println("3 - Cadastro de Cliente");
         System.out.println("4 - Consulta de Cliente");
         System.out.println("5 - Exibir gerentes da empresa"); // todos os gerente e o total de quanto a empresa paga
@@ -67,41 +70,56 @@ public class Menu {
         System.out.println("Digite... ");
     }
 
-    void cadastroFuncionario() {
-
-    }
-
     void venda() {
         String procurarFuncionario;
         System.out.println("Funcionário da venda: ");
         procurarFuncionario = "teste"; // recebe scanner e tal
     }
 
+    void cadastroFuncionario() {
+        int tipo;
+        System.out.println("Digite o tipo: \n1 - Funcionário;\b2 - Vendedor;\b3 - Gerente;\b4 - Cliente; ");
+        tipo = numLeitor.nextInt();
+
+    }
+
     void cadastroCliente() {
+        Pessoa novoCliente = new Pessoa();
+        cliente.add(novoCliente);
     }
 
     void consultaCliente() {
+        System.out.println("Pesquisar Cliente");
+        cliente.get(pesquisa(4)).exibir();
     }
 
     void exibirGerentes() {
     }
 
     void updateFuncionario() {
-        System.out.println("Atualizar vendedor");
-        pesquisa(1);
+        System.out.println("Atualizar Funcionário");
+        funcionario.get(pesquisa(1)).updateFuncionario();
     }
 
     void updateVendedor() {
+        System.out.println("Atualizar Vendedor ");
+        vendedor.get(pesquisa(2)).updateFuncionario();
     }
 
     void updateGerente() {
+        System.out.println("Atualizar Gerente ");
+        gerente.get(pesquisa(3)).updateGerente();
+    }
+
+    void updateCliente() {
+        cliente.get(pesquisa(4)).updatePessoa();
     }
 
     public int pesquisa(int tipoDePessoa) {
-        //int indice = 0;
+        // int indice = 0;
         // Funcionario 1;
-        // Vendedor 2; 
-        // Gerente 3; 
+        // Vendedor 2;
+        // Gerente 3;
         // Cliente 4;
         String nomePesquisa;
         System.out.println("Digite o nome: ");
