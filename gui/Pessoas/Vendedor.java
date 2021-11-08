@@ -10,7 +10,8 @@ public class Vendedor extends Funcionario {
     public void exibirVendedor(){
         exibir();
         exibirFuncionario();
-        System.out.println("Número de vendas: "+ numeroDeVendas);
+        System.out.println("Número de vendas: "+ numeroDeVendas+"\n");
+        
     }
     public void novaVenda(){
         numeroDeVendas++;

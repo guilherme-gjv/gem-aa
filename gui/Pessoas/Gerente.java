@@ -25,9 +25,9 @@ public class Gerente extends Funcionario {
         exibir();
         exibirFuncionario();
         System.out.println("Valor da Gratificação: "+gratificacao);
-        System.out.println("Departamento: "+departamento);
+        System.out.println("Departamento: "+departamento+"\n");
 
-        //retorna o salário
+        //retorna o salário e gratificação
         return gratificacao + getSalario();
     }
     public float getGratificacao(){
