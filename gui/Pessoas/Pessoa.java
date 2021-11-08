@@ -22,10 +22,10 @@ private void setPessoa(){
     System.out.println("Telefone: ");
     telefone = numLeitor.nextInt();
 }
-protected void updatePessoa(){
+public void updatePessoa(){
     setPessoa();
 }
-protected void exibir(){
+public void exibir(){
     System.out.println("Nome: "+nome);
     System.out.println("Cidade: "+cidade);
     System.out.println("CEP: "+ CEP);
