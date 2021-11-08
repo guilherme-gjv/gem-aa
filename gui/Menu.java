@@ -83,7 +83,7 @@ public class Menu {
 
     private void cadastroFuncionario() {
         int tipo;
-        System.out.println("Digite o tipo: \n1 - Vendedor;\n2 - Gerente;\n3 - Cliente; ");
+        System.out.println("Digite o tipo: \n1 - Vendedor;\n2 - Gerente;");
         tipo = numLeitor.nextInt();
         switch (tipo) {
         case 1:
@@ -93,10 +93,6 @@ public class Menu {
         case 2:
             Gerente g = new Gerente();
             gerente.add(g);
-            break;
-        case 3:
-            Pessoa c = new Pessoa();
-            cliente.add(c);
             break;
         }
     }
@@ -162,7 +158,7 @@ public class Menu {
         int tipo = 0, escolha = 0;
         System.out.println("Como quer exibir?");
         System.out.println("\n1 - Exibir todos\n2 - Tudo de uma categoria específica");
-        System.out.println("\n3 - Uma pessoa específica");
+        System.out.println("3 - Uma pessoa específica");
         escolha = numLeitor.nextInt();
         switch (escolha) {
         case 1:
@@ -202,15 +198,34 @@ public class Menu {
             tipo = 0;
             System.out.println("Digite o tipo: \n1 - Vendedor;\n2 - Gerente;\n3 - Cliente; ");
             tipo = numLeitor.nextInt();
+            int i = 0;
             switch (tipo) {
             case 1:
-                vendedor.get(pesquisa(1)).exibirVendedor();
+                i = pesquisa(1);
+                if (i == -1) {
+                    System.out.println("Não encontrado!");
+                } else {
+                    vendedor.get(i).exibirVendedor();
+                }
+
                 break;
             case 2:
-                gerente.get(pesquisa(2)).exibirGerente();
+                i = pesquisa(2);
+                if (i == -1) {
+                    System.out.println("Não encontrado!");
+                } else {
+                    gerente.get(i).exibirGerente();
+                }
+
                 break;
             case 3:
-                cliente.get(pesquisa(3)).exibir();
+                i = pesquisa(3);
+                if (i == -1) {
+                    System.out.println("Não encontrado!");
+                } else {
+                    cliente.get(i).exibir();
+                }
+
                 break;
             default:
                 System.out.println("Tipo inválido! Digite 1, 2 ou 3");
