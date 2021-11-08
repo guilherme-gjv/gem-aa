@@ -54,7 +54,7 @@ public class Menu {
 
     private void exibirMenu() {
         System.out.println("1 - Nova Venda");
-        System.out.println("2 - Cadastrar funcionário");
+        System.out.println("2 - Cadastrar cliente ou funcionário");
         System.out.println("3 - Cadastro de Cliente");
         System.out.println("4 - Consulta de Cliente");
         System.out.println("5 - Exibir gerentes da empresa"); // todos os gerentes e o total de quanto a empresa paga
@@ -69,12 +69,17 @@ public class Menu {
     private void venda() {
 
         System.out.println("Funcionário da venda: ");
-        // recebe scanner e tal
+        if(vendedor.isEmpty()){
+            System.out.println("Cadastre um Vendedor antes de fazer uma venda! ");
+        }else{
+            vendedor.get(pesquisa(1)).novaVenda();
+        }
+        
     }
 
     private void cadastroFuncionario() {
         int tipo;
-        System.out.println("Digite o tipo: \n1 - Vendedor;\b2 - Gerente;\b3 - Cliente; ");
+        System.out.println("Digite o tipo: \n1 - Vendedor;\n2 - Gerente;\n3 - Cliente; ");
         tipo = numLeitor.nextInt();
         switch (tipo) {
         case 1:
