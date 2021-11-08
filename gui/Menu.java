@@ -165,9 +165,9 @@ public class Menu {
             for (int i = 0; i < vendedor.size(); i++) {
                 vendedor.get(i).exibirVendedor();
             }
-            for (int i = 0; i < gerente.size(); i++) {
-                gerente.get(i).exibirGerente();
-            }
+
+            exibirGerentes();
+
             for (int i = 0; i < cliente.size(); i++) {
                 cliente.get(i).exibir();
             }
@@ -219,13 +219,7 @@ public class Menu {
 
                 break;
             case 3:
-                i = pesquisa(3);
-                if (i == -1) {
-                    System.out.println("Não encontrado!");
-                } else {
-                    cliente.get(i).exibir();
-                }
-
+                consultaCliente();
                 break;
             default:
                 System.out.println("Tipo inválido! Digite 1, 2 ou 3");
