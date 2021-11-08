@@ -45,16 +45,19 @@ public class Menu {
                 updateCliente();
                 break;
             case 9:
+                exibirDados();
+                break;
+            case 10:
                 System.out.println("Saindo...");
                 break;
             }
-        } while (resposta != 9);
+        } while (resposta != 10);
 
     }
 
     private void exibirMenu() {
         System.out.println("1 - Nova Venda");
-        System.out.println("2 - Cadastrar cliente ou funcionário");
+        System.out.println("2 - Cadastrar Cliente ou Funcionário");
         System.out.println("3 - Cadastro de Cliente");
         System.out.println("4 - Consulta de Cliente");
         System.out.println("5 - Exibir gerentes da empresa"); // todos os gerentes e o total de quanto a empresa paga
@@ -62,19 +65,20 @@ public class Menu {
         System.out.println("6 - Atualizar dados de um Vendedor"); // perguntar o nome
         System.out.println("7 - Atualizar dados de um Gerente");// perguntar o nome
         System.out.println("8 - Atualizar dados de um Cliente");
-        System.out.println("9 - Sair");
+        System.out.println("9 - Exibir Dados de Funcionários ou Gerentes");
+        System.out.println("10 - Sair");
         System.out.println("Digite... ");
     }
 
     private void venda() {
 
         System.out.println("Funcionário da venda: ");
-        if(vendedor.isEmpty()){
+        if (vendedor.isEmpty()) {
             System.out.println("Cadastre um Vendedor antes de fazer uma venda! ");
-        }else{
+        } else {
             vendedor.get(pesquisa(1)).novaVenda();
         }
-        
+
     }
 
     private void cadastroFuncionario() {
@@ -154,6 +158,62 @@ public class Menu {
 
     }
 
+    private void exibirDados() {
+        int tipo = 0, escolha = 0;
+        System.out.println("Como quer exibir?");
+        System.out.println("\n1 - Exibir todos\n2 - Tudo de uma categoria específica");
+        System.out.println("\n3 - Uma pessoa específica");
+        switch (escolha) {
+        case 1:
+            break;
+        case 2:
+            tipo = 0;
+            System.out.println("Digite o tipo: \n1 - Vendedor;\n2 - Gerente;\n3 - Cliente; ");
+            tipo = numLeitor.nextInt();
+            switch (tipo) {
+            case 1:
+                for (int i = 0; i < vendedor.size(); i++) {
+                    vendedor.get(i).exibirVendedor();
+                }
+                break;
+            case 2:
+                for (int i = 0; i < gerente.size(); i++) {
+                    gerente.get(i).exibirGerente();
+                }
+                break;
+            case 3:
+                for (int i = 0; i < cliente.size(); i++) {
+                    cliente.get(i).exibir();
+                }
+                break;
+            }
+            break;
+        case 3:
+            tipo = 0;
+            System.out.println("Digite o tipo: \n1 - Vendedor;\n2 - Gerente;\n3 - Cliente; ");
+            tipo = numLeitor.nextInt();
+            switch (tipo) {
+            case 1:
+                vendedor.get(pesquisa(1)).exibirVendedor();
+                break;
+            case 2:
+                gerente.get(pesquisa(2)).exibirGerente();
+                break;
+            case 3:
+                cliente.get(pesquisa(3)).exibir();
+                break;
+            default:
+                System.out.println("Tipo inválido! Digite 1, 2 ou 3");
+                break;
+            }
+            break;
+        default:
+            System.out.println("Escolha inválida! Digite 1, 2 ou 3");
+            break;
+        }
+
+    }
+
     public int pesquisa(int tipoDePessoa) {
         // Vendedor 1;
         // Gerente 2;
@@ -191,7 +251,8 @@ public class Menu {
 
         return -1;
     }
-    public void tchau(){
+
+    public void tchau() {
         System.out.println(" Tchau!! :D "); // fiz essa função para evitar warning no objeto do Menu :)
     }
 }
