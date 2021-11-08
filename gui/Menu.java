@@ -94,4 +94,42 @@ public class Menu {
     void updateGerente() {
     }
 
+    int pesquisa(int tipoDePessoa) {
+        //int indice = 0;
+        // Funcionario 1; 
+        // Gerente 2; 
+        // Cliente 3;
+        String nomePesquisa;
+        System.out.println("Digite o nome: ");
+        nomePesquisa = strLeitor.nextLine();
+        switch (tipoDePessoa) {
+        case 1:
+            for (int i = 0; i < funcionario.size(); i++) {
+                if (funcionario.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
+                    return i;
+                }
+            }
+            break;
+        case 2:
+            for (int i = 0; i < gerente.size(); i++) {
+                if (gerente.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
+                    return i;
+                }
+            }
+            break;
+        case 3:
+            for (int i = 0; i < cliente.size(); i++) {
+                if (cliente.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
+                    return i;
+                }
+            }
+            break;
+        default:
+            return -1;
+        }
+
+        System.out.println("Nome não encontrado!");
+
+        return -1;
+    }
 }
