@@ -9,6 +9,7 @@ public class Menu {
     Scanner strLeitor = new Scanner(System.in);
     Scanner numLeitor = new Scanner(System.in);
 
+    ArrayList<Vendedor> vendedor = new ArrayList<>();
     ArrayList<Funcionario> funcionario = new ArrayList<>();
     ArrayList<Gerente> gerente = new ArrayList<>();
     ArrayList<Pessoa> cliente = new ArrayList<>();
@@ -86,6 +87,8 @@ public class Menu {
     }
 
     void updateFuncionario() {
+        System.out.println("Atualizar vendedor");
+        pesquisa(1);
     }
 
     void updateVendedor() {
@@ -94,11 +97,12 @@ public class Menu {
     void updateGerente() {
     }
 
-    int pesquisa(int tipoDePessoa) {
+    public int pesquisa(int tipoDePessoa) {
         //int indice = 0;
-        // Funcionario 1; 
-        // Gerente 2; 
-        // Cliente 3;
+        // Funcionario 1;
+        // Vendedor 2; 
+        // Gerente 3; 
+        // Cliente 4;
         String nomePesquisa;
         System.out.println("Digite o nome: ");
         nomePesquisa = strLeitor.nextLine();
@@ -111,13 +115,20 @@ public class Menu {
             }
             break;
         case 2:
+            for (int i = 0; i < vendedor.size(); i++) {
+                if (vendedor.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
+                    return i;
+                }
+            }
+            break;
+        case 3:
             for (int i = 0; i < gerente.size(); i++) {
                 if (gerente.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
                     return i;
                 }
             }
             break;
-        case 3:
+        case 4:
             for (int i = 0; i < cliente.size(); i++) {
                 if (cliente.get(i).getNome().equalsIgnoreCase(nomePesquisa)) {
                     return i;
