@@ -163,8 +163,18 @@ public class Menu {
         System.out.println("Como quer exibir?");
         System.out.println("\n1 - Exibir todos\n2 - Tudo de uma categoria específica");
         System.out.println("\n3 - Uma pessoa específica");
+        escolha = numLeitor.nextInt();
         switch (escolha) {
         case 1:
+            for (int i = 0; i < vendedor.size(); i++) {
+                vendedor.get(i).exibirVendedor();
+            }
+            for (int i = 0; i < gerente.size(); i++) {
+                gerente.get(i).exibirGerente();
+            }
+            for (int i = 0; i < cliente.size(); i++) {
+                cliente.get(i).exibir();
+            }
             break;
         case 2:
             tipo = 0;
