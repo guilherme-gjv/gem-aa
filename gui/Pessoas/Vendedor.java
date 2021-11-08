@@ -1,6 +1,5 @@
 package gui.Pessoas;
 
-
 public class Vendedor extends Funcionario {
     
     int numeroDeVendas;
