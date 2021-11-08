@@ -13,7 +13,7 @@ public class Menu {
     ArrayList<Gerente> gerente = new ArrayList<>();
     ArrayList<Pessoa> cliente = new ArrayList<>();
 
-    Menu() {
+    public Menu() {
 
         int resposta = 0;
         do {
@@ -52,7 +52,7 @@ public class Menu {
 
     }
 
-    void exibirMenu() {
+    private void exibirMenu() {
         System.out.println("1 - Nova Venda");
         System.out.println("2 - Cadastrar funcionário");
         System.out.println("3 - Cadastro de Cliente");
@@ -66,13 +66,13 @@ public class Menu {
         System.out.println("Digite... ");
     }
 
-    void venda() {
+    private void venda() {
 
         System.out.println("Funcionário da venda: ");
         // recebe scanner e tal
     }
 
-    void cadastroFuncionario() {
+    private void cadastroFuncionario() {
         int tipo;
         System.out.println("Digite o tipo: \n1 - Vendedor;\b2 - Gerente;\b3 - Cliente; ");
         tipo = numLeitor.nextInt();
@@ -92,12 +92,12 @@ public class Menu {
         }
     }
 
-    void cadastroCliente() {
+    private void cadastroCliente() {
         Pessoa novoCliente = new Pessoa();
         cliente.add(novoCliente);
     }
 
-    void consultaCliente() {
+    private void consultaCliente() {
         System.out.println("Pesquisar Cliente");
         int i = pesquisa(3);
         if (i == -1) {
@@ -108,7 +108,7 @@ public class Menu {
 
     }
 
-    void exibirGerentes() {
+    private void exibirGerentes() {
         float somaSalarios = 0;
         for (int i = 0; i < gerente.size(); i++) {
             somaSalarios = gerente.get(i).exibirGerente() + somaSalarios;
@@ -116,7 +116,7 @@ public class Menu {
         System.out.println("A empresa paga " + somaSalarios + " para todos os Gerentes");
     }
 
-    void updateVendedor() {
+    private void updateVendedor() {
         System.out.println("Atualizar Vendedor ");
         int i = pesquisa(1);
         if (i == -1) {
@@ -127,7 +127,7 @@ public class Menu {
 
     }
 
-    void updateGerente() {
+    private void updateGerente() {
         System.out.println("Atualizar Gerente ");
         int i = pesquisa(2);
         if (i == -1) {
@@ -138,7 +138,7 @@ public class Menu {
 
     }
 
-    void updateCliente() {
+    private void updateCliente() {
         System.out.println("Atualizar Cliente ");
         int i = pesquisa(3);
         if (i == -1) {
@@ -150,11 +150,9 @@ public class Menu {
     }
 
     public int pesquisa(int tipoDePessoa) {
-        // int indice = 0;
-        // Funcionario 1;
-        // Vendedor 2;
-        // Gerente 3;
-        // Cliente 4;
+        // Vendedor 1;
+        // Gerente 2;
+        // Cliente 3;
         String nomePesquisa;
         System.out.println("Digite o nome: ");
         nomePesquisa = strLeitor.nextLine();
@@ -187,5 +185,8 @@ public class Menu {
         System.out.println("Nome não encontrado!");
 
         return -1;
+    }
+    public void tchau(){
+        System.out.println(" Tchau!! :D "); // fiz essa função para evitar warning no objeto do Menu :)
     }
 }
