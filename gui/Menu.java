@@ -71,9 +71,9 @@ public class Menu {
     }
 
     void venda() {
-        String procurarFuncionario;
+        
         System.out.println("Funcionário da venda: ");
-        procurarFuncionario = "teste"; // recebe scanner e tal
+         // recebe scanner e tal
     }
 
     void cadastroFuncionario() {
@@ -98,21 +98,26 @@ public class Menu {
 
     void updateFuncionario() {
         System.out.println("Atualizar Funcionário");
-        funcionario.get(pesquisa(1)).updateFuncionario();
+        int i = pesquisa(1);
+        funcionario.get(i).updateFuncionario();
     }
 
     void updateVendedor() {
         System.out.println("Atualizar Vendedor ");
-        vendedor.get(pesquisa(2)).updateFuncionario();
+        int i = pesquisa(2);
+        vendedor.get(i).updateFuncionario();
     }
 
     void updateGerente() {
         System.out.println("Atualizar Gerente ");
-        gerente.get(pesquisa(3)).updateGerente();
+        int i = pesquisa(3);
+        gerente.get(i).updateGerente();
     }
 
     void updateCliente() {
-        cliente.get(pesquisa(4)).updatePessoa();
+        System.out.println("Atualizar Cliente ");
+        int i = pesquisa(4);
+        cliente.get(i).updatePessoa();
     }
 
     public int pesquisa(int tipoDePessoa) {

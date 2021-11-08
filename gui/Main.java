@@ -4,6 +4,7 @@ import gui.Pessoas.Funcionario;
 
 public class Main {
     public static void main(String[] args) {
-        Funcionario funcionario = new Funcionario();
+        Menu menu = new Menu();
+        menu.pesquisa(1);
     }
 }
