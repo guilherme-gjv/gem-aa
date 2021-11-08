@@ -5,7 +5,6 @@ import java.util.*;
 public class Funcionario extends Pessoa{
     private float salario;
     private String setor;
-    int numeroDeVendas = 0;
 
     private Scanner strLeitor = new Scanner(System.in);
     private Scanner numLeitor = new Scanner(System.in);
@@ -29,12 +28,8 @@ public class Funcionario extends Pessoa{
         updatePessoa();
         setFuncionario();
     }
-    public void novaVenda(){
-        numeroDeVendas++;
-    }
-    public int getNumeroDeVendas(){
-        return numeroDeVendas;
-    }
+    
+    
     public float getSalario(){
         return salario;
     }
