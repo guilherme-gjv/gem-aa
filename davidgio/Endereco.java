@@ -1,3 +1,4 @@
+package davidgio;
 import java.util.Scanner;
 
 public class Endereco{
@@ -7,11 +8,15 @@ public class Endereco{
     int CEP;
 
     public Endereco(){
-        setEndereco();
+        setEnd();
     }
-    public void setEndereco(){
+    public void setEnd(){
         System.out.println("Cidade ");
         cidade = l1.nextLine();
         CEP = l.nextInt();
+    }
+    public void atEnd(){
+        System.out.println("Atualizar endereço");
+        setEnd();
     }
 }

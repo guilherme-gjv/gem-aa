@@ -1,5 +1,5 @@
 package davidgio;
 
-public class Funcionario {
-    
+public class Funcionario extends Endereco{
+    //individuo, salario, endereco,departamento
 }
