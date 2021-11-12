@@ -15,12 +15,13 @@ public class Gerente  extends Funcionario{
     }
 
     public void mostrarGerente(){
+        mostrarFuncionario();
         System.out.println("Departamento "+ departamento + "\nGratificação "+gratificacao);
     }
 
     public float valortotalGerente(){
-        float total;
-        total = gratificacao + getSalario();
+        float total = 0;
+        total = getSalario() + gratificacao;
         return total;
     }
 }

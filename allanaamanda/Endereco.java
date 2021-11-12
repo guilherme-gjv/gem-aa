@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Endereco {
     private String cidade;
     private int CEP;
-    Scanner entrada = new Scanner(System.in);
+    Scanner entrada = new Scanner(System.in), entrada1 = new Scanner(System.in);
 
     public Endereco(String cidade, int CEP){
         this.cidade = cidade;
@@ -17,7 +17,7 @@ public class Endereco {
     }
     public void atualizarEndTel(){
         System.out.println("Digite a Cidade da Pessoa: ");
-        cidade = entrada.nextLine();
+        cidade = entrada1.nextLine();
         System.out.println("Digite o CEP da Pessoa: ");
         CEP = entrada.nextInt();
     }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    Scanner entrada = new Scanner(System.in);
+    Scanner entrada = new Scanner(System.in), entrada1 = new Scanner(System.in);
     ArrayList<Gerente> gerentes = new ArrayList<>();
     ArrayList<Vendedor> vendedores = new ArrayList<>();
     ArrayList<Cliente> clientes = new ArrayList<>();
@@ -11,7 +11,7 @@ public class Menu {
         menu();
     }
 
-    private void rodar() {
+    private int rodar() {
         int resultado = entrada.nextInt();
         switch (resultado) {
         case 1:
@@ -30,6 +30,7 @@ public class Menu {
             atualizarValorDeVendas();
             break;
         }
+        return resultado;
     }
 
     private void menu() {
@@ -38,7 +39,7 @@ public class Menu {
             System.out.println("Distribuidora Nossa Arapiraca");
         System.out.println("1: CADASTRAR FUNCIONARIO" + "\n2: CADASTRAR E CONSULTAR CLIENTE" + "\n3: EXIBIR GERENTES"
                 + "\n4: ATUALIZAR ENDEREÇO E TELEFONE DE FUNCIONÁRIO" + "\n5: ATUALIZAR O VALOR DE VENDAS\n6: Sair");
-        rodar();
+        r = rodar();
         }
         
     }
@@ -84,7 +85,7 @@ public class Menu {
         float salariototal = 0;
         for (int cont = 0; cont < gerentes.size(); cont++) {
             gerentes.get(cont).mostrarGerente();
-            salariototal = gerentes.get(cont).getSalario() + salariototal;
+            salariototal = gerentes.get(cont).valortotalGerente() + salariototal;
         }
         System.out.println("O gasto com todos os gerentes na empresa é " + salariototal);
     }
@@ -92,7 +93,12 @@ public class Menu {
     private void atualizarEnderecoETelefoneDeFuncionario() {
         String nomeFunc;
         System.out.println("Qual é o nome do funcionário? ");
-        nomeFunc = entrada.nextLine();
+        nomeFunc = entrada1.nextLine();
+        for (int cont = 0; cont < vendedores.size(); cont++) {
+            if (nomeFunc.equalsIgnoreCase(vendedores.get(cont).getNome())) {
+                vendedores.get(cont).atualizarEndTel();
+            }
+        }
         for (int cont = 0; cont < gerentes.size(); cont++) {
             if (nomeFunc.equalsIgnoreCase(gerentes.get(cont).getNome())) {
                 gerentes.get(cont).atualizarEndTel();
@@ -103,7 +109,7 @@ public class Menu {
     private void atualizarValorDeVendas() {
         String nomeFunc;
         System.out.println("Qual é o nome do funcionário? ");
-        nomeFunc = entrada.nextLine();
+        nomeFunc = entrada1.nextLine();
         for (int cont = 0; cont < vendedores.size(); cont++) {
             if (nomeFunc.equalsIgnoreCase(vendedores.get(cont).getNome())) {
                 vendedores.get(cont).atualizarVendas();
