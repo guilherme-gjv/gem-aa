@@ -65,7 +65,7 @@ public class Menu {
         System.out.println("6 - Atualizar dados de um Vendedor"); // perguntar o nome
         System.out.println("7 - Atualizar dados de um Gerente");// perguntar o nome
         System.out.println("8 - Atualizar dados de um Cliente");
-        System.out.println("9 - Exibir Dados de Funcionários ou Gerentes");
+        System.out.println("9 - Exibir Dados de Vendedores ou Gerentes");
         System.out.println("10 - Sair");
         System.out.println("Digite... ");
     }
