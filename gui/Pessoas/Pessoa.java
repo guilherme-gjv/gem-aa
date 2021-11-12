@@ -15,6 +15,9 @@ private void setPessoa(){
     
     System.out.println("Nome: ");
     nome = strLeitor.nextLine();
+    setEnderecoETelefone();
+}
+private void setEnderecoETelefone(){
     System.out.println("Cidade: ");
     cidade = strLeitor.nextLine();
     System.out.println("CEP: ");
@@ -24,6 +27,9 @@ private void setPessoa(){
 }
 public void updatePessoa(){
     setPessoa();
+}
+public void updateEnderecoETelefone(){
+    setEnderecoETelefone();
 }
 public void exibir(){
     System.out.println("Nome: "+nome);
