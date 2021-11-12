@@ -2,7 +2,7 @@ package gui.Pessoas;
 
 import java.util.*;
 
-public class Funcionario extends Pessoa{
+public abstract class Funcionario extends Pessoa{
     private float salario;
     private String setor;
 
