@@ -18,9 +18,6 @@ public class Gerente extends Funcionario {
         System.out.println("Departamento: ");
         departamento = strLeitor.nextLine();
     }
-    public void updateGerente(){
-        setGerente();
-    }
     public float exibirGerente(){
         exibirFuncionario();
         System.out.println("Valor da Gratificação: "+gratificacao);

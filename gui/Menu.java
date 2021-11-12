@@ -133,12 +133,13 @@ public class Menu {
     }
 
     private void updateGerente() {
+        
         System.out.println("Atualizar Gerente ");
         int i = pesquisa(2);
         if (i == -1) {
             System.out.println("Não encontrado! ");
         } else {
-            gerente.get(i).updateGerente();
+            gerente.get(i).updateFuncionario();
         }
 
     }
