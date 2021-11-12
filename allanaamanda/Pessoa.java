@@ -11,6 +11,7 @@ public class Pessoa extends Endereco{
         this.telefone = telefone;
     }
     protected Pessoa(){
+        System.out.println("\n");
         System.out.println("Digite o nome ");
         nome = entrada.nextLine();
         System.out.println("Digite o telefone ");
@@ -20,4 +21,8 @@ public class Pessoa extends Endereco{
         mostrarEndereco();
         System.out.println("Nome "+ nome +"\nTelfone "+ telefone);
     }
+    public String getNome(){
+        return nome;
+    }
+    
 }
