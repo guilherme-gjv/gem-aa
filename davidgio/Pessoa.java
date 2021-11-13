@@ -1,7 +1,7 @@
 package davidgio;
 
 public class Pessoa extends Endereco{
-    //telefone,valor ja comprado
+    //ENDEREÇO, telefone,valor ja comprado
     protected int telefone;
     protected float valorJaComprado;
     public Pessoa(){

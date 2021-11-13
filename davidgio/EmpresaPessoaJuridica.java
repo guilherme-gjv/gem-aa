@@ -1,6 +1,6 @@
 package davidgio;
 public class EmpresaPessoaJuridica extends Pessoa {
-    //endereço, individuo, quant func
+    //ENDEREÇO, INDIVIDUO, quant func
     int quantidadeFuncionarios = 0;
     public EmpresaPessoaJuridica(){
         System.out.println("Digite a quantidade de funcionários ");

@@ -1,6 +1,6 @@
 package davidgio;
 public class Funcionario extends Endereco{
-    //individuo, salario, endereco,departamento
+    //INVIVIDUO, salario, ENDEREÇO,departamento
     protected float salario;
     protected String departamento;
     public Funcionario(){
