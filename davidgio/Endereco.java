@@ -2,10 +2,10 @@ package davidgio;
 import java.util.Scanner;
 
 public class Endereco{
-    Scanner l = new Scanner(System.in);
-    Scanner l1 = new Scanner(System.in);
-    String cidade;
-    int CEP;
+    protected Scanner l = new Scanner(System.in);
+    protected Scanner l1 = new Scanner(System.in);
+    protected String cidade;
+    protected int CEP;
 
     public Endereco(){
         setEnd();
