@@ -4,7 +4,7 @@ public class Individuos extends Endereco {
     //nome, ENDEREÇO
     public Individuos(){
         System.out.println("Nome ");
-        nome = l.nextLine();
+        nome = l1.nextLine();
     }
     public String getNome(){
         return nome;

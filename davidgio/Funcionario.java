@@ -4,7 +4,7 @@ public class Funcionario extends Individuos{
     private float salario;
     private String departamento;
     public Funcionario(){
-        System.out.println("Digite ");
+        System.out.println("Digite o salário ");
         salario = l.nextFloat();
         System.out.println("Departamento ");
         departamento = l1.nextLine();

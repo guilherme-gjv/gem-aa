@@ -55,12 +55,6 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("Consultar Cliente ");
-                    System.out.println("Qual é o tipo de Cliente?");
-                    System.out.println("[1] Pessoa Física ");
-                    System.out.println("[2] Pessoa Jurídica (Empresa) ");
-                    tipo = l.nextInt();
-                    System.out.println("Ok.");
                     System.out.println("Digite o nome do Cliente");
                     
                     String nome1 = l2.nextLine();

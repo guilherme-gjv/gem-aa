@@ -13,6 +13,7 @@ public class Endereco{
     public void setEnd(){
         System.out.println("Cidade ");
         cidade = l1.nextLine();
+        System.out.println("CEP ");
         CEP = l.nextInt();
     }
     public void atEnd(){
