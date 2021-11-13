@@ -10,4 +10,10 @@ public class EmpresaPessoaJuridica extends Pessoa {
         System.out.println("Digite a quantidade de funcionários ");
         quantidadeFuncionarios = l.nextInt();
     }
+    public void exibirPJ(){
+        exibirEnd();
+        exibirIndividuo();
+        exibirPessoa();
+        System.out.println("Quantidade de Funcionários - "+quantidadeFuncionarios);
+    }
 }

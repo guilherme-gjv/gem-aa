@@ -1,9 +1,15 @@
 package davidgio;
 public class Individuos extends Endereco {
-    protected String nome;
+    private String nome;
     //nome, ENDEREÇO
     public Individuos(){
         System.out.println("Nome ");
         nome = l.nextLine();
+    }
+    public String getNome(){
+        return nome;
+    }
+    public void exibirIndividuo(){
+        System.out.println("Nome - "+ nome);
     }
 }

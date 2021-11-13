@@ -1,12 +1,25 @@
 package davidgio;
-public class Funcionario extends Endereco{
+public class Funcionario extends Individuos{
     //INVIVIDUO, salario, ENDEREÇO,departamento
-    protected float salario;
-    protected String departamento;
+    private float salario;
+    private String departamento;
     public Funcionario(){
         System.out.println("Digite ");
         salario = l.nextFloat();
         System.out.println("Departamento ");
         departamento = l1.nextLine();
+    }
+    public void exibirFunc(){
+        exibirEnd();
+        exibirIndividuo();
+        System.out.println("Salário - "+salario);
+        System.out.println("Departamento - "+departamento);
+    }
+    public void atSalario(){
+        System.out.println("Atualizar Salário. Novo salário: ");
+        salario = l.nextFloat();
+    }
+    public float getSalario(){
+        return salario;
     }
 }
