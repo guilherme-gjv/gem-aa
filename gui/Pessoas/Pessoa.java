@@ -1,9 +1,12 @@
 package gui.Pessoas;
 
 import java.util.*;
+
+import gui.Endereco;
 public class Pessoa {
-    private String nome,cidade;
-    private int CEP, telefone;
+    private String nome;
+    private int telefone;
+    private Endereco endereco;
     private Scanner strLeitor = new Scanner(System.in);
     private Scanner numLeitor = new Scanner(System.in);
 
@@ -12,16 +15,12 @@ public Pessoa(){
 }
 
 private void setPessoa(){
-    
     System.out.println("Nome: ");
     nome = strLeitor.nextLine();
     setEnderecoETelefone();
 }
 private void setEnderecoETelefone(){
-    System.out.println("Cidade: ");
-    cidade = strLeitor.nextLine();
-    System.out.println("CEP: ");
-    CEP = numLeitor.nextInt();
+    endereco = new Endereco();
     System.out.println("Telefone: ");
     telefone = numLeitor.nextInt();
 }
@@ -33,8 +32,7 @@ public void updateEnderecoETelefone(){
 }
 public void exibir(){
     System.out.println("Nome: "+nome);
-    System.out.println("Cidade: "+cidade);
-    System.out.println("CEP: "+ CEP);
+    endereco.exibirE();
     System.out.println("Telefone:"+ telefone);
 }
 
@@ -42,10 +40,10 @@ public String getNome(){
     return nome;
 }
 public String getCidade(){
-    return cidade;
+    return endereco.getCidade();
 }
 public int getCEP(){
-    return CEP;
+    return endereco.getCEP();
 }
 public int getTelefone(){
     return telefone;
