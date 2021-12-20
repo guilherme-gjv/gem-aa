@@ -7,16 +7,18 @@ import gui.Pessoas.*;
 import gui.Produtos.*;
 
 public class Menu implements IEstoque {
-    Scanner strLeitor = new Scanner(System.in);
-    Scanner numLeitor = new Scanner(System.in);
+    private Scanner strLeitor = new Scanner(System.in);
+    private Scanner numLeitor = new Scanner(System.in);
 
-    ArrayList<Vendedor> vendedor = new ArrayList<>();
-    ArrayList<Gerente> gerente = new ArrayList<>();
-    ArrayList<Pessoa> cliente = new ArrayList<>();
+    private ArrayList<Vendedor> vendedor = new ArrayList<>();
+    private ArrayList<Gerente> gerente = new ArrayList<>();
+    private ArrayList<Pessoa> cliente = new ArrayList<>();
 
-    public ArrayList<Produto> produtos = new ArrayList<>();
-    public ArrayList<ProdutoPerecivel> produtosPereciveis = new ArrayList<>();
-    public ArrayList<Lampada> lampadas = new ArrayList<>();
+    private ArrayList<Produto> produtos = new ArrayList<>();
+    private ArrayList<ProdutoPerecivel> produtosPereciveis = new ArrayList<>();
+    private ArrayList<Lampada> lampadas = new ArrayList<>();
+
+    private float saldoEmCaixa;
 
     public Menu() {
 
@@ -53,25 +55,49 @@ public class Menu implements IEstoque {
                     exibirDados();
                     break;
                 case 10:
+                    cadastrarProdutos();
+                    break;
+                case 11:
+                    updateCliente();
+                    break;
+                case 12:
+                    consultarProdutos();
+                    break;
+                case 13:
+                    deletarProdutos();
+                    break;
+                case 14:
+                    removerProdutoForaDaValidade();
+                    break;
+                case 15:
+                    verSaldoEmCaixa();
+                    break;
+                case 16:
                     System.out.println("Saindo...");
                     break;
             }
-        } while (resposta != 10);
+        } while (resposta != 16);
 
     }
 
     private void exibirMenu() {
-        System.out.println("1 - Nova Venda");
-        System.out.println("2 - Cadastrar Funcionário");
-        System.out.println("3 - Cadastro de Cliente");
-        System.out.println("4 - Consulta de Cliente");
-        System.out.println("5 - Exibir gerentes da empresa"); // todos os gerentes e o total de quanto a empresa paga
-                                                              // para eles
-        System.out.println("6 - Atualizar dados de um Vendedor"); // perguntar o nome
-        System.out.println("7 - Atualizar dados de um Gerente");// perguntar o nome
-        System.out.println("8 - Atualizar dados de um Cliente");
-        System.out.println("9 - Exibir Dados de Vendedores ou Gerentes");
-        System.out.println("10 - Sair");
+        System.out.println("1  - Nova Venda");
+        System.out.println("2  - Cadastrar Funcionário");
+        System.out.println("3  - Cadastro de Cliente");
+        System.out.println("4  - Consulta de Cliente");
+        System.out.println("5  - Exibir gerentes da empresa"); // todos os gerentes e o total de quanto a empresa os
+                                                               // paga
+        System.out.println("6  - Atualizar dados de um Vendedor"); // perguntar o nome
+        System.out.println("7  - Atualizar dados de um Gerente");// perguntar o nome
+        System.out.println("8  - Atualizar dados de um Cliente");
+        System.out.println("9  - Exibir Dados de Vendedores ou Gerentes");
+        System.out.println("10 - Cadastrar Produtos");
+        System.out.println("11 - Atualizar produtos");
+        System.out.println("12 - Consultar Produtos");
+        System.out.println("13 - Deletar Produtos");
+        System.out.println("14 - Remover Produtos fora da validade");
+        System.out.println("15 - Ver Saldo em caixa");
+        System.out.println("16 - Sair");
         System.out.println("Digite... ");
     }
 
@@ -82,6 +108,42 @@ public class Menu implements IEstoque {
             System.out.println("Cadastre um Vendedor antes de fazer uma venda! ");
         } else {
             vendedor.get(pesquisaPessoa(1)).novaVenda();
+            System.out.println("Tipo de Produto");
+            System.out.println("1 - Produto Simples ");
+            System.out.println("2 - Produto Perecível");
+            System.out.println("3 - Lâmpada");
+            System.out.println("4 - Cancelar venda ");
+            int resposta = numLeitor.nextInt();
+            int indice;
+            switch (resposta) {
+                case 1:
+                    indice = pesquisaProduto(1);
+                    if(indice == -1){
+                        System.out.println("Produto não encontrado! ");
+                    }else{
+                        saldoEmCaixa = saldoEmCaixa + produtos.get(indice).venda();
+                    }
+                    break;
+                case 2:
+                    indice = pesquisaProduto(2);
+                    if(indice == -1){
+                        System.out.println("Produto não encontrado! ");
+                    }else{
+                        saldoEmCaixa = saldoEmCaixa + produtosPereciveis.get(indice).venda();
+                    }
+                    break;
+                case 3:
+                    indice = pesquisaProduto(3);
+                    if(indice == -1){
+                        System.out.println("Produto não encontrado! ");
+                    }else{
+                        saldoEmCaixa = saldoEmCaixa + lampadas.get(indice).venda();
+                    }
+                    break;
+                default:
+                    System.out.println("Cancelando venda...");
+                    break;
+            }
         }
 
     }
@@ -316,15 +378,28 @@ public class Menu implements IEstoque {
         switch (escolha) {
             case 1:
                 indice = pesquisaProduto(1);
-                produtos.get(indice).updateDados();
+                if (indice == -1) {
+                    System.out.println("Produto não encontrado! ");
+                } else {
+                    produtos.get(indice).updateDados();
+                }
                 break;
             case 2:
                 indice = pesquisaProduto(2);
-                produtosPereciveis.get(indice).updateProdutoPerecivel();
+                if (indice == -1) {
+                    System.out.println("Produto não encontrado! ");
+                } else {
+                    produtosPereciveis.get(indice).updateProdutoPerecivel();
+                }
+
                 break;
             case 3:
                 indice = pesquisaProduto(3);
-                lampadas.get(indice).updateLampada();
+                if (indice == -1) {
+                    System.out.println("Produto não encontrado! ");
+                } else {
+                    lampadas.get(indice).updateLampada();
+                }
                 break;
             default:
                 System.out.println("Cancelando cadastro...");
@@ -335,46 +410,168 @@ public class Menu implements IEstoque {
 
     @Override
     public void consultarProdutos() {
-        // TODO Auto-generated method stub
-
+        System.out.println("--Consultar Produtos--");
+        System.out.println("1 - Ver tudo");
+        System.out.println("2 - Ver Produtos Simples");
+        System.out.println("3 - Ver Produtos Perecíveis");
+        System.out.println("4 - Ver Lâmpadas");
+        System.out.println("5 - Consultar produto específico");
+        int resposta = numLeitor.nextInt();
+        switch (resposta) {
+            case 1:
+                for (int i = 0; i < produtos.size(); i++) {
+                    produtos.get(i).showProduto();
+                    System.out.println(" ");
+                }
+                for (int i = 0; i < produtosPereciveis.size(); i++) {
+                    produtosPereciveis.get(i).showProdutoPerecivel();
+                }
+                for (int i = 0; i < lampadas.size(); i++) {
+                    lampadas.get(i).showLampada();
+                }
+                break;
+            case 2:
+                for (int i = 0; i < produtos.size(); i++) {
+                    produtos.get(i).showProduto();
+                    System.out.println(" ");
+                }
+                break;
+            case 3:
+                for (int i = 0; i < produtosPereciveis.size(); i++) {
+                    produtosPereciveis.get(i).showProdutoPerecivel();
+                }
+                break;
+            case 4:
+                for (int i = 0; i < lampadas.size(); i++) {
+                    lampadas.get(i).showLampada();
+                }
+                break;
+            case 5:
+                System.out.println("Tipo de Produto");
+                System.out.println("1 - Produto Simples ");
+                System.out.println("2 - Produto Perecível");
+                System.out.println("3 - Lâmpada");
+                int reposta2 = numLeitor.nextInt();
+                int indice;
+                switch (reposta2) {
+                    case 1:
+                        indice = pesquisaProduto(1);
+                        if (indice == -1) {
+                            System.out.println("Produto não encontrado! ");
+                        } else {
+                            produtos.get(indice).showProduto();
+                        }
+                        break;
+                    case 2:
+                        indice = pesquisaProduto(2);
+                        if (indice == -1) {
+                            System.out.println("Produto não encontrado! ");
+                        } else {
+                            produtosPereciveis.get(indice).showProdutoPerecivel();
+                        }
+                    case 3:
+                        indice = pesquisaProduto(3);
+                        if (indice == -1) {
+                            System.out.println("Produto não encontrado! ");
+                        } else {
+                            lampadas.get(indice).showLampada();
+                        }
+                        break;
+                }
+                break;
+            case 6:
+                break;
+        }
     }
 
     @Override
     public void deletarProdutos() {
-        // TODO Auto-generated method stub
-        
+        System.out.println("--Deletar Produto--");
+        System.out.println("Tipo de Produto");
+        System.out.println("1 - Produto Simples ");
+        System.out.println("2 - Produto Perecível");
+        System.out.println("3 - Lâmpada");
+        int reposta2 = numLeitor.nextInt();
+        int indice;
+        switch (reposta2) {
+            case 1:
+                indice = pesquisaProduto(1);
+                if (indice == -1) {
+                    System.out.println("Produto não encontrado! ");
+                } else {
+                    produtos.remove(indice);
+                    System.out.println("Produto deletado.");
+                }
+                break;
+            case 2:
+                indice = pesquisaProduto(2);
+                if (indice == -1) {
+                    System.out.println("Produto não encontrado! ");
+                } else {
+                    produtosPereciveis.remove(indice);
+                    System.out.println("Produto deletado.");
+                }
+            case 3:
+                indice = pesquisaProduto(3);
+                if (indice == -1) {
+                    System.out.println("Produto não encontrado! ");
+                } else {
+                    lampadas.remove(indice);
+                    System.out.println("Produto deletado.");
+                }
+                break;
+        }
+
     }
 
     @Override
     public void removerProdutoForaDaValidade() {
-        // TODO Auto-generated method stub
-
+        System.out.println("Deseja remover os produtos perecíveis fora da validade do estoque?");
+        System.out.println("1 - Sim ");
+        System.out.println("2 - Não ");
+        int resposta = numLeitor.nextInt();
+        switch (resposta) {
+            case 1:
+                System.out.println("Itens removidos: ");
+                for (int i = 0; i < produtosPereciveis.size(); i++) {
+                    if (produtosPereciveis.get(i).getStatus().equalsIgnoreCase("fora da validade.")) {
+                        System.out.println("Nome: " + produtosPereciveis.get(i).getNome());
+                        System.out.println("Código: " + produtosPereciveis.get(i).getCodigo());
+                        System.out.println("Produto removido do estoque.\n");
+                        produtosPereciveis.remove(i);
+                    }
+                }
+                break;
+            default:
+                System.out.println("Cancelando operação...");
+                break;
+        }
     }
 
     private int pesquisaProduto(int tipodeDeProduto) {
         // 1 - Produto Simples
         // 2 - Produto Perecível
         // 3 - Lâmpada
-        System.out.println("Digite o código do produto: ");//não coloquei código
+        System.out.println("Digite o código do produto: ");// não coloquei código
         int codigo = numLeitor.nextInt();
         switch (tipodeDeProduto) {
             case 1:
-                for(int i = 0; i < produtos.size(); i++ ){
-                    if(produtos.get(i).getCodigo() == codigo){
+                for (int i = 0; i < produtos.size(); i++) {
+                    if (produtos.get(i).getCodigo() == codigo) {
                         return i;
                     }
                 }
                 break;
             case 2:
-                for(int i = 0; i < produtosPereciveis.size(); i++){
-                    if(produtosPereciveis.get(i).getCodigo() == codigo){
+                for (int i = 0; i < produtosPereciveis.size(); i++) {
+                    if (produtosPereciveis.get(i).getCodigo() == codigo) {
                         return i;
                     }
                 }
                 break;
             case 3:
-                for(int i = 0; i < produtosPereciveis.size(); i++){
-                    if(lampadas.get(i).getCodigo() == codigo){
+                for (int i = 0; i < produtosPereciveis.size(); i++) {
+                    if (lampadas.get(i).getCodigo() == codigo) {
                         return i;
                     }
                 }
@@ -382,6 +579,10 @@ public class Menu implements IEstoque {
         }
         System.out.println("Produto não encontrado! ");
         return -1;
+    }
+
+    private void verSaldoEmCaixa(){
+        System.out.println("O saldo em caixa é de: R$"+ saldoEmCaixa);
     }
 
     public void tchau() {
