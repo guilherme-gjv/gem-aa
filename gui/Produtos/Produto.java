@@ -34,6 +34,16 @@ public class Produto {
         System.out.println("Quantidade em estoque: "+quantidadeEstoque);
         System.out.println("Preço: "+preco);
     }
+    public float venda(){
+        if(quantidadeEstoque>0){
+           quantidadeEstoque--; 
+           System.out.println("Venda finalizada.");
+           return preco;
+        }else{
+            System.out.println("Produto sem estoque.");
+            return 0;
+        }
+    }
     public int getCodigo(){
         return codigo;
     }
