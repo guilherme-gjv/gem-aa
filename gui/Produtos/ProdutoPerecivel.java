@@ -54,6 +54,9 @@ public class ProdutoPerecivel extends Produto{
         showProduto();
         System.out.println("Data de fabricação: "+dataDeFabricacao);
         System.out.println("Data de validade: "+dataDeValidade);
-        System.out.println("Status: "+ status);
+        System.out.println("Status: "+ status+"\n");
+    }
+    public String getStatus() {
+        return status;
     }
 }

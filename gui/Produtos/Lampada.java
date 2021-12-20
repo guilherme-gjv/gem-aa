@@ -24,7 +24,7 @@ public class Lampada extends Produto{
         showProduto();
         System.out.println("Potencia da lâmpada: "+potencia);
         System.out.println("Tipo: "+tipo);
-        System.out.println("Cor: "+cor);
+        System.out.println("Cor: "+cor+"\n");
     }
     public float getPotencia() {
         return potencia;
